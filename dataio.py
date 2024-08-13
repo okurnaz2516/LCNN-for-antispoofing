@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 21 23:01:52 2024
-
-@author: chanilci
-"""
 
 import torch
 from torch.utils.data import Dataset, DataLoader
