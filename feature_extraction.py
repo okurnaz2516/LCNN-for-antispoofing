@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 21 23:03:24 2024
 
-@author: chanilci
-"""
 import torchaudio 
 import torch
 
