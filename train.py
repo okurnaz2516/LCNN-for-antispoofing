@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 21 23:10:03 2024
 
-@author: chanilci
-"""
 import torch.nn as nn
 import torch.optim as optim
 import torch
