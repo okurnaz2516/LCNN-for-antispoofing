@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Jun 22 00:04:19 2024
 
-@author: chanilci
-"""
 
 import numpy as np
 from sklearn.metrics import roc_curve
