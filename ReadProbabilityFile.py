@@ -7,7 +7,7 @@ from scipy.optimize import brentq
 
 labels = []
 scores = []
-with open('lcnn_eval_scores.txt','r') as f:
+with open('./lcnn_eval_scores.txt','r') as f:
     lines = f.readlines()
 
 for line in lines:
