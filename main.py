@@ -23,7 +23,7 @@ def main():
     num_epochs = 20
     
     # Determine if GPU is available
-    device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # Create the model
     model = LCNN(input_dim=input_dim, num_classes=num_classes)
