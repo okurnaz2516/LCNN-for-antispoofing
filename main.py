@@ -32,15 +32,15 @@ def main():
     # Create the training and validation datasets and dataloaders
     train_subset = 'train'
     val_subset = 'dev'
-    Train_protocol_file = './asvspoof2017/protocol_V2/ASVspoof2017_V2_train.trn.txt'  # Path to your protocol file
-    Train_AudioPath = './asvspoof2017/ASVspoof2017_V2_' + train_subset + '/'
+    Train_protocol_file = './asvspoof2019/protocols/ASVspoof2019.LA.cm.train.trn.txt'  # Path to your protocol file
+    Train_AudioPath = './asvspoof2019/ASVspoof2019_' + train_subset + '/'
 
-    Val_protocol_file = './asvspoof2017/protocol_V2/ASVspoof2017_V2_dev.trl.txt'  # Path to your protocol file
-    Val_AudioPath = './asvspoof2017/ASVspoof2017_V2_' + val_subset + '/'
+    Val_protocol_file = './asvspoof2019/protocols/ASVspoof2019.LA.cm.dev.trl.txt'  # Path to your protocol file
+    Val_AudioPath = './asvspoof2019/ASVspoof2019_' + val_subset + '/'
     eval_subset = 'eval'
     
-    Eval_protocol_file = './asvspoof2017/protocol_V2/ASVspoof2017_V2_eval.trl.txt'  # Path to your protocol file
-    Eval_AudioPath = './asvspoof2017/ASVspoof2017_V2_' + eval_subset + '/'
+    Eval_protocol_file = './asvspoof2019/protocols/ASVspoof2019.LA.cm.eval.trl.txt'  # Path to your protocol file
+    Eval_AudioPath = './asvspoof2019/ASVspoof2019_' + eval_subset + '/'
  
     # Create the transform
     transform = SpectrogramTransform(n_fft=512, win_length=480, hop_length=160)
@@ -71,13 +71,13 @@ def main():
     model.load_state_dict(checkpoint)
     
     # Save output probabilities of the validation dataset
-    save_output_probabilities(model, DevDataLoader, output_file='lcnn_dev_scores.txt', device='cuda')
+    save_output_probabilities(model, DevDataLoader, output_file='./lcnn_dev_scores.txt', device='cuda')
 
     EvalDataset = AudioDataset(protocol_file=Eval_protocol_file , AudioPath=Eval_AudioPath, transform=transform, fixed_num_frames=fixed_num_frames)
     EvalDataLoader = DataLoader(EvalDataset, batch_size=batch_size, shuffle = False)
     
     # Save output probabilities of the validation dataset
-    save_output_probabilities(model, EvalDataLoader, output_file='lcnn_eval_scores.txt', device='cuda')
+    save_output_probabilities(model, EvalDataLoader, output_file='./lcnn_eval_scores.txt', device='cuda')
 
 if __name__ == '__main__':
     main()
