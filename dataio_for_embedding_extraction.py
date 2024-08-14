@@ -16,8 +16,12 @@ class AudioDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        audio_path = self.audiopath + self.data[idx, 0]
-        key = self.data[idx,0]
+        audio_path = self.audiopath + self.data[idx, 1] + '.flac'
+        key = self.data[idx,4]
+        if key=='bonafide':
+            label = 1
+        else:
+            label = 0
                 
         #label = self.data.iloc[idx, 1]
         num_frames = self.fixed_num_frames
