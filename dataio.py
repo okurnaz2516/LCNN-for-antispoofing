@@ -37,8 +37,10 @@ class AudioDataset(Dataset):
 
     def _fix_num_frames(self, spectrogram, num_frames):
         if spectrogram.shape[-1] < num_frames:
-            pad_amount = num_frames - spectrogram.shape[-1]
-            spectrogram = torch.nn.functional.pad(spectrogram, (0, pad_amount))
+              while spectrogram.shape[-1] < num_frames:
+                  remaining_pad = num_frames - spectrogram.shape[-1]
+                  pad_part = spectrogram[:, :, :min(spectrogram.shape[-1], remaining_pad)]
+                  spectrogram = torch.cat([spectrogram, pad_part], dim=-1)
         else:
             spectrogram = spectrogram[:, :, :num_frames]
         return spectrogram
